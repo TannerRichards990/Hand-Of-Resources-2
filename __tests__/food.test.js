@@ -29,16 +29,27 @@ describe('backend-express-template routes', () => {
       name: 'Pizza',
       healthy: false
     });
-    
-
-
   });
-  afterAll(() => {
-    pool.end();
+
+  it.only('#POST /food should create a new food', async () => {
+    const newFood = {
+      name: 'Lasagna',
+      healthy: false
+    };
+    const response = await request(app).post('/food').send(newFood);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(newFood.name);
+    expect(response.body.healthy).toEqual(newFood.healthy);
+  });
+
+  it.skip('#PUT /food/:id should update a food', async () => {
+    const update = {
+      name: 'Lasagna',
+      healthy: false
+    };
+    const response = await request(app).put('/food/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(update.name);
   });
 
 });
-
-
-
-
