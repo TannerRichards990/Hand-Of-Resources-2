@@ -52,7 +52,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it.only('#DELETE /food/:id should delete a food', async () => {
+  it('#DELETE /food/:id should delete a food', async () => {
     const response = await request(app).delete('/food/1');
     expect(response.status).toBe(200);
     const deletedFood = await request(app).get('/food/1');
