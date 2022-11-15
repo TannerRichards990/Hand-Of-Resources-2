@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it.only('#GET /cars should return all cars', async () => {
+  it('#GET /cars should return all cars', async () => {
     const response = await request(app).get('/cars');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -18,4 +18,20 @@ describe('backend-express-template routes', () => {
       model: expect.any(String),
     });
   });
+
+  it.only('#GET /cars/:id should return a single car', async () => {
+    const response = await request(app).get('/cars/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      brand: 'Ford',
+      model: 'Mustang',
+    });
+  });
+
+
+
+
+
+
 }); 
