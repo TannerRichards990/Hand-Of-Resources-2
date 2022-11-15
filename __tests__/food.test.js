@@ -31,7 +31,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.only('#POST /food should create a new food', async () => {
+  it('#POST /food should create a new food', async () => {
     const newFood = {
       name: 'Lasagna',
       healthy: false
@@ -42,7 +42,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.healthy).toEqual(newFood.healthy);
   });
 
-  it.skip('#PUT /food/:id should update a food', async () => {
+  it.only('#PUT /food/:id should update a food', async () => {
     const update = {
       name: 'Lasagna',
       healthy: false
