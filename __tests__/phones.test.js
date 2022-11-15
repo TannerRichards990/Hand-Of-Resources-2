@@ -40,7 +40,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.model).toEqual(newPhone.model);
   });
 
-  it('#PUT /phones/:id should update a phone', async () => {
+  it.skip('#PUT /phones/:id should update a phone', async () => {
     const update = {
       brand: 'Nokia',
       model: '3310',
@@ -50,9 +50,18 @@ describe('backend-express-template routes', () => {
     expect(response.body.brand).toEqual(update.brand);
   });
 
+  it('#DELETE /phones/:id should delete a phone', async () => {
+    const response = await request(app).delete('/phones/1');
+    expect(response.status).toBe(200);
+    const deletedPhone = await request(app).get('/phones/1');
+    expect(deletedPhone.status).toBe(404);
+  });
 
+  afterAll(() => {
+    pool.end();
+  });
 });
-  
 
 
-    
+
+
