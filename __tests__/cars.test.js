@@ -29,7 +29,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.only('#POST /cars should create a new car', async () => {
+  it('#POST /cars should create a new car', async () => {
     const newCar = {
       brand: 'Subaru',
       model: 'Outback',
@@ -39,6 +39,18 @@ describe('backend-express-template routes', () => {
     expect(response.body.brand).toEqual(newCar.brand);
     expect(response.body.model).toEqual(newCar.model);
   });
+
+  it.only('#PUT /cars/:id should update a car', async () => {
+    const update = {
+      brand: 'Subaru',
+      model: 'Outback',
+    };
+    const response = await request(app).put('/cars/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.brand).toEqual(update.brand);
+  });
+
+
 
 
 
