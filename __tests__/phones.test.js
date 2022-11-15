@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /phones should return all phones', async () => {
+  it.skip('#GET /phones should return all phones', async () => {
     const response = await request(app).get('/phones');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -18,4 +18,14 @@ describe('backend-express-template routes', () => {
       model: expect.any(String),
     });
   });
+
+  it.only('#GET /phones/:id should return a single phone', async () => {
+    const response = await request(app).get('/phones/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      brand: 'Apple',
+      model: 'iPhone 11',
+    });
+  }); 
 });
