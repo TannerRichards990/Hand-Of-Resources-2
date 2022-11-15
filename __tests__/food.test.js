@@ -10,7 +10,7 @@ describe('backend-express-template routes', () => {
 
 
 
-  it('#GET /food should return all food', async () => {
+  it.skip('#GET /food should return all food', async () => {
     const response = await request (app).get('/food');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -21,7 +21,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#GET /food/:id should return a single food', async () => {
+  it.skip('#GET /food/:id should return a single food', async () => {
     const response = await request(app).get('/food/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -31,7 +31,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#POST /food should create a new food', async () => {
+  it.skip('#POST /food should create a new food', async () => {
     const newFood = {
       name: 'Lasagna',
       healthy: false
@@ -42,7 +42,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.healthy).toEqual(newFood.healthy);
   });
 
-  it('#PUT /food/:id should update a food', async () => {
+  it.skip('#PUT /food/:id should update a food', async () => {
     const update = {
       name: 'Lasagna',
       healthy: false
@@ -52,7 +52,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it('#DELETE /food/:id should delete a food', async () => {
+  it.skip('#DELETE /food/:id should delete a food', async () => {
     const response = await request(app).delete('/food/1');
     expect(response.status).toBe(200);
     const deletedFood = await request(app).get('/food/1');
