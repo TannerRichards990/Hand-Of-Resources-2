@@ -19,7 +19,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.only('#GET /phones/:id should return a single phone', async () => {
+  it.skip('#GET /phones/:id should return a single phone', async () => {
     const response = await request(app).get('/phones/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -28,4 +28,31 @@ describe('backend-express-template routes', () => {
       model: 'iPhone 11',
     });
   }); 
+
+  it.skip('#POST /phones should create a new phone', async () => {
+    const newPhone = {
+      brand: 'Nokia',
+      model: '3310',
+    };
+    const response = await request(app).post('/phones').send(newPhone);
+    expect(response.status).toBe(200);
+    expect(response.body.brand).toEqual(newPhone.brand);
+    expect(response.body.model).toEqual(newPhone.model);
+  });
+
+  it('#PUT /phones/:id should update a phone', async () => {
+    const update = {
+      brand: 'Nokia',
+      model: '3310',
+    };
+    const response = await request(app).put('/phones/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.brand).toEqual(update.brand);
+  });
+
+
 });
+  
+
+
+    
