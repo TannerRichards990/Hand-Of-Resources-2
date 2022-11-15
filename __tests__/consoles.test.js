@@ -30,7 +30,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#POST /consoles should create a new console', async () => {
+  it.skip('#POST /consoles should create a new console', async () => {
     const newConsole = {
       name: 'Xbox Series X',
       released: '2020',
@@ -40,6 +40,30 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(newConsole.name);
     expect(response.body.released).toEqual(newConsole.released);
   });
+
+  it.skip('#PUT /consoles/:id should update a console', async () => {
+    const update = {
+      name: 'Xbox Series X',
+      released: '2020',
+    };
+    const response = await request(app).put('/consoles/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(update.name);
+  });
+
+  it('#DELETE /consoles/:id should delete a console', async () => {
+    const response = await request(app).delete('/consoles/1');
+    expect(response.status).toBe(200);
+    const deletedConsole = await request(app).get('/consoles/1');
+    expect(deletedConsole.status).toBe(404);
+  });
+
+  afterAll(() => {
+    pool.end();
+  });
 });
+
+
+
 
 
