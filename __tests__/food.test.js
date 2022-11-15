@@ -42,7 +42,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.healthy).toEqual(newFood.healthy);
   });
 
-  it.only('#PUT /food/:id should update a food', async () => {
+  it('#PUT /food/:id should update a food', async () => {
     const update = {
       name: 'Lasagna',
       healthy: false
@@ -50,6 +50,17 @@ describe('backend-express-template routes', () => {
     const response = await request(app).put('/food/1').send(update);
     expect(response.status).toBe(200);
     expect(response.body.name).toEqual(update.name);
+  });
+
+  it.only('#DELETE /food/:id should delete a food', async () => {
+    const response = await request(app).delete('/food/1');
+    expect(response.status).toBe(200);
+    const deletedFood = await request(app).get('/food/1');
+    expect(deletedFood.status).toBe(404);
+  });
+
+  afterAll(() => {
+    pool.end();
   });
 
 });
