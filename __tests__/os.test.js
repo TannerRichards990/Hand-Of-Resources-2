@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /os should return all os', async () => {
+  it.skip('#GET /os should return all os', async () => {
     const response = await request(app).get('/os');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -19,7 +19,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#GET /os/:id should return a single os', async () => {
+  it.skip('#GET /os/:id should return a single os', async () => {
     const response = await request(app).get('/os/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -29,7 +29,7 @@ describe('backend-express-template routes', () => {
     });
   });
   
-  it('#POST /os should create a new os', async () => {
+  it.skip('#POST /os should create a new os', async () => {
     const newOS = {
       name: 'android',
       easy: true,
@@ -40,7 +40,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.easy).toEqual(newOS.easy);
   });
 
-  it('#PUT /os/:id should update an os', async () => {
+  it.skip('#PUT /os/:id should update an os', async () => {
     const update = {
       name: 'android',
       easy: true,
@@ -50,7 +50,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it('#DELETE /os/:id should delete an os', async () => {
+  it.skip('#DELETE /os/:id should delete an os', async () => {
     const response = await request(app).delete('/os/1');
     expect(response.status).toBe(200);
     const deletedOS = await request(app).get('/os/1');
