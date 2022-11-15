@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /consoles should return all consoles', async () => {
+  it.skip('#GET /consoles should return all consoles', async () => {
     const response = await request (app).get('/consoles');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -19,4 +19,14 @@ describe('backend-express-template routes', () => {
       
     });
   });
-}); 
+
+  it('#GET /consoles/:id should return a single console', async () => {
+    const response = await request(app).get('/consoles/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      name: 'Playstation 4',
+      released: '2013',
+    });
+  });
+});
