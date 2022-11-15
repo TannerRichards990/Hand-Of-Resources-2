@@ -40,7 +40,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.model).toEqual(newCar.model);
   });
 
-  it.only('#PUT /cars/:id should update a car', async () => {
+  it('#PUT /cars/:id should update a car', async () => {
     const update = {
       brand: 'Subaru',
       model: 'Outback',
@@ -50,13 +50,14 @@ describe('backend-express-template routes', () => {
     expect(response.body.brand).toEqual(update.brand);
   });
 
+  it.only('#DELETE /cars/:id should delete a car', async () => {
+    const response = await request(app).delete('/cars/1');
+    expect(response.status).toBe(200);
+    const deletedCar = await request(app).get('/cars/1');
+    expect(deletedCar.status).toBe(404);
+  });
 
-
-
-
-
-
-
-
-
+  afterAll(() => {
+    pool.end();
+  });
 }); 
