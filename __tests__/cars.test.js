@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /cars should return all cars', async () => {
+  it.skip('#GET /cars should return all cars', async () => {
     const response = await request(app).get('/cars');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -19,7 +19,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#GET /cars/:id should return a single car', async () => {
+  it.skip('#GET /cars/:id should return a single car', async () => {
     const response = await request(app).get('/cars/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -29,7 +29,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#POST /cars should create a new car', async () => {
+  it.skip('#POST /cars should create a new car', async () => {
     const newCar = {
       brand: 'Subaru',
       model: 'Outback',
@@ -40,7 +40,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.model).toEqual(newCar.model);
   });
 
-  it('#PUT /cars/:id should update a car', async () => {
+  it.skip('#PUT /cars/:id should update a car', async () => {
     const update = {
       brand: 'Subaru',
       model: 'Outback',
@@ -50,7 +50,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.brand).toEqual(update.brand);
   });
 
-  it.only('#DELETE /cars/:id should delete a car', async () => {
+  it.skip('#DELETE /cars/:id should delete a car', async () => {
     const response = await request(app).delete('/cars/1');
     expect(response.status).toBe(200);
     const deletedCar = await request(app).get('/cars/1');
