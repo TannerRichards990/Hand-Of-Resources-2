@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it.skip('#GET /consoles should return all consoles', async () => {
+  it('#GET /consoles should return all consoles', async () => {
     const response = await request (app).get('/consoles');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -20,7 +20,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.skip('#GET /consoles/:id should return a single console', async () => {
+  it('#GET /consoles/:id should return a single console', async () => {
     const response = await request(app).get('/consoles/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -30,7 +30,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.skip('#POST /consoles should create a new console', async () => {
+  it('#POST /consoles should create a new console', async () => {
     const newConsole = {
       name: 'Xbox Series X',
       released: '2020',
@@ -41,7 +41,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.released).toEqual(newConsole.released);
   });
 
-  it.skip('#PUT /consoles/:id should update a console', async () => {
+  it('#PUT /consoles/:id should update a console', async () => {
     const update = {
       name: 'Xbox Series X',
       released: '2020',
@@ -51,7 +51,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it.skip('#DELETE /consoles/:id should delete a console', async () => {
+  it('#DELETE /consoles/:id should delete a console', async () => {
     const response = await request(app).delete('/consoles/1');
     expect(response.status).toBe(200);
     const deletedConsole = await request(app).get('/consoles/1');

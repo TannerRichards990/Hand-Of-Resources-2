@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it.skip('#GET /os should return all os', async () => {
+  it('#GET /os should return all os', async () => {
     const response = await request(app).get('/os');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(3);
@@ -19,7 +19,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it.skip('#GET /os/:id should return a single os', async () => {
+  it('#GET /os/:id should return a single os', async () => {
     const response = await request(app).get('/os/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -29,7 +29,7 @@ describe('backend-express-template routes', () => {
     });
   });
   
-  it.skip('#POST /os should create a new os', async () => {
+  it('#POST /os should create a new os', async () => {
     const newOS = {
       name: 'android',
       easy: true,
@@ -40,7 +40,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.easy).toEqual(newOS.easy);
   });
 
-  it.skip('#PUT /os/:id should update an os', async () => {
+  it('#PUT /os/:id should update an os', async () => {
     const update = {
       name: 'android',
       easy: true,
@@ -50,7 +50,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it.skip('#DELETE /os/:id should delete an os', async () => {
+  it('#DELETE /os/:id should delete an os', async () => {
     const response = await request(app).delete('/os/1');
     expect(response.status).toBe(200);
     const deletedOS = await request(app).get('/os/1');
@@ -63,75 +63,5 @@ describe('backend-express-template routes', () => {
 });
   
 
-// it('GET /os should return all os', async () => {
-//     const res = await request(app).get('/os');
-//     expect(res.status).toBe(200);
-//     expect(res.body).toMatchInlineSnapshot(`
-//       Array [
-//         Object {
-//           "easy": "yes",
-//           "id": "1",
-//           "name": "Windows",
-//           },
-//           Object {
-//             "easy": "no",
-//             "id": "2",
-//             "name": "Mac",
-//             },
-//             Object {
-//               "easy": "yes",
-//               "id": "3",
-//               "name": "Linux",
-//               },
-//             ]`
-//     );
-//   });
-  
-//   it('GET /os/1 should return a single os', async () => {
-//     const res = await request(app).get('/os/1');
-//     expect(res.status).toBe(200);
-//     expect(res.body).toEqual({
-//       id: '1',
-//       name: 'Windows',
-//       easy: 'yes',
-//     });
-//   });
-  
-//   it('POST /os should create a new os', async () => {
-//     const newOS = {
-//       name: 'Android',
-//       easy: 'no',
-//     };
-//     const res = await request(app).post('/os').send(newOS);
-//     expect(res.status).toBe(200);
-//     expect(res.body).toMatchInlineSnapshot(`
-//       Object {
-//         "easy": "no",
-//         "id": "4",
-//         "name": "Android",
-//         }`
-//     );
-  
-//     it('PUT /os/1 should update an os', async () => {
-//       const res = await request(app).put('/os/1').send({
-//         name: 'Windows',
-//         easy: 'no',
-//       });
-//       expect(res.status).toBe(200);
-//     });
-  
-//     it('DELETE /os/1 should delete an os', async () => {
-//       const res = await request(app).delete('/os/1');
-//       expect(res.status).toBe(200);
-  
-//       const { os } = await request(app).get('/os/1');
-//       expect(os).toEqual(undefined);
-//     });
-  
-//     afterAll(() => {
-//       pool.end();
-//     });
-//   });
-// });
 
 
