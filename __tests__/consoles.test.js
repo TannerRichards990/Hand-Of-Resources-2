@@ -51,7 +51,7 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
-  it('#DELETE /consoles/:id should delete a console', async () => {
+  it.skip('#DELETE /consoles/:id should delete a console', async () => {
     const response = await request(app).delete('/consoles/1');
     expect(response.status).toBe(200);
     const deletedConsole = await request(app).get('/consoles/1');
